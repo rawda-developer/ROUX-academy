@@ -4,7 +4,8 @@
   "description": "A dynamic website based on a static template using node.js and express.js",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "dev": "nodemon --ignore feedback.json server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rawda Yasser",
