@@ -1,7 +1,7 @@
 {
   "name": "roux-academy",
   "version": "1.0.0",
-  "description": "A web app based on node.js and express.js",
+  "description": "A dynamic website based on a static template using node.js and express.js",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
