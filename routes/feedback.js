@@ -4,7 +4,11 @@ module.exports = ({ feedbackService }) => {
   router.get('/', async (req, res, next) => {
     try {
       const feedback = await feedbackService.getList();
-      return res.json(feedback);
+      return res.render('layout', {
+        pageTitle: 'Feedback',
+        template: 'feedback',
+        feedback,
+      });
     } catch (err) {
       return next(err);
     }
