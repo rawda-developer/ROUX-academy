@@ -8,8 +8,9 @@ module.exports = (params) => {
       req.session.visitCount = 0;
     }
     req.session.visitCount++;
-    res.render('pages/index', {
-      pageTitle: 'Home',
+    res.render('layout', {
+      pageTitle: 'Welcome',
+      template: 'index',
     });
     console.log(`Number of visits is ${req.session.visitCount}`);
   });
