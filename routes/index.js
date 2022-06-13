@@ -3,16 +3,14 @@ const router = express.Router();
 const speakersRoute = require('./speakers');
 const feedbackRoute = require('./feedback');
 module.exports = (params) => {
-  router.get('/', (req, res) => {
-    if (!req.session.visitCount) {
-      req.session.visitCount = 0;
-    }
-    req.session.visitCount++;
+  router.get('/', async (req, res) => {
+    const { speakerService } = params;
+    const topSpeakers = await speakerService.getListShort();
     res.render('layout', {
       pageTitle: 'Welcome',
       template: 'index',
+      topSpeakers,
     });
-    console.log(`Number of visits is ${req.session.visitCount}`);
   });
   router.use('/speakers', speakersRoute(params));
   router.use('/feedback', feedbackRoute(params));

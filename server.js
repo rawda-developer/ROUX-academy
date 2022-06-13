@@ -18,10 +18,21 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000, // 24 hours)
   })
 );
+app.locals.siteName = 'ROUX Academy';
 app.set('trust proxy', 1); // trust first proxy cookies on (nginx)
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
+app.use(async (req, res, next) => {
+  try {
+    const names = await speakerService.getNames();
+    res.locals.speakerNames = names;
 
+    return next();
+  } catch (err) {
+    console.log(err);
+    return next(err);
+  }
+});
 app.use(
   '/',
   routes({
