@@ -6,9 +6,10 @@
 
         <div class="mb-4">
           <h4 class="speakerslist-title"><%= element.title %></h4>
+
           <div class="speakerslist-name">
             with
-            <a href="/<%= element.shortname %>">/<%= element.name %></a>
+            <a href="/speakers/<%= element.shortname %>"><%= element.name %></a>
           </div>
           <div class="row speakerslist-info mt-2">
             <div class="col-sm-3">
@@ -20,12 +21,7 @@
                 />
               </a>
             </div>
-            <div class="col-sm-9">
-              Hillary is a sophomore art sculpture student at New York University, and has won the
-              major international prizes for painters, including the Divinity Circle and the
-              International Painter&#39;s Medal. Hillary&#39;s exhibit features paintings that
-              contain only water including waves, deep sea, and river.
-            </div>
+            <div class="col-sm-9"><%= element.summary %></div>
           </div>
         </div>
         <% }); %>
@@ -39,23 +35,10 @@
           the work from our speakers.
         </p>
         <div class="pixgrid clearfix">
-          <img src="./images/artwork/Lorenzo_Garcia_01_tn.jpg" alt="Artwork 0" />
-          <img src="./images/artwork/Lorenzo_Garcia_02_tn.jpg" alt="Artwork 1" />
-          <img src="./images/artwork/Lorenzo_Garcia_03_tn.jpg" alt="Artwork 2" />
-          <img src="./images/artwork/Lorenzo_Garcia_04_tn.jpg" alt="Artwork 3" />
-          <img src="./images/artwork/Hillary_Goldwynn_01_tn.jpg" alt="Artwork 4" />
-          <img src="./images/artwork/Hillary_Goldwynn_02_tn.jpg" alt="Artwork 5" />
-          <img src="./images/artwork/Hillary_Goldwynn_03_tn.jpg" alt="Artwork 6" />
-          <img src="./images/artwork/Hillary_Goldwynn_04_tn.jpg" alt="Artwork 7" />
-          <img src="./images/artwork/Hillary_Goldwynn_05_tn.jpg" alt="Artwork 8" />
-          <img src="./images/artwork/Hillary_Goldwynn_06_tn.jpg" alt="Artwork 9" />
-          <img src="./images/artwork/Hillary_Goldwynn_07_tn.jpg" alt="Artwork 10" />
-          <img src="./images/artwork/Riley_Rewington_01_tn.jpg" alt="Artwork 11" />
-          <img src="./images/artwork/Riley_Rewington_02_tn.jpg" alt="Artwork 12" />
-          <img src="./images/artwork/Riley_Rewington_03_tn.jpg" alt="Artwork 13" />
-          <img src="./images/artwork/Riley_Rewington_04_tn.jpg" alt="Artwork 14" />
-          <img src="./images/artwork/Riley_Rewington_05_tn.jpg" alt="Artwork 15" />
-          <img src="./images/artwork/Riley_Rewington_06_tn.jpg" alt="Artwork 16" />
+          <% artworks.forEach(element => { %>
+
+          <img src="./images/artwork/<%= element %>" alt="Artwork 16" />
+          <% }); %>
         </div>
       </article>
     </aside>

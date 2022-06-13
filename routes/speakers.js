@@ -3,10 +3,12 @@ const router = express.Router();
 module.exports = ({ speakerService }) => {
   router.get('/', async (req, res) => {
     const speakers = await speakerService.getList();
+    const artworks = await speakerService.getAllArtwork();
     return res.render('layout', {
       pageTitle: 'Speakers',
       template: 'speakers',
       speakers,
+      artworks,
     });
   });
   router.get('/:shortname', async (req, res) => {
