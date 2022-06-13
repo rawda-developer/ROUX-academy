@@ -26,12 +26,8 @@
           While you attend the conference, head over to our gallery where you can check out some of
           the work from our speakers.
         </p>
-        <div class="pixgrid clearfix">
-          <% artworks.forEach(element => { %>
-          <img src="/images/artwork/<%= element %>" alt="<%= element %>" />
 
-          <% }); %>
-        </div>
+        <%- include('./partials/artworks') %>
       </article>
     </aside>
   </div>

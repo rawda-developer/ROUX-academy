@@ -6,10 +6,12 @@ module.exports = (params) => {
   router.get('/', async (req, res) => {
     const { speakerService } = params;
     const topSpeakers = await speakerService.getListShort();
+    const artworks = await speakerService.getAllArtwork();
     res.render('layout', {
       pageTitle: 'Welcome',
       template: 'index',
       topSpeakers,
+      artworks,
     });
   });
 
