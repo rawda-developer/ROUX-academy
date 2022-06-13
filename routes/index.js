@@ -12,6 +12,7 @@ module.exports = (params) => {
       topSpeakers,
     });
   });
+
   router.use('/speakers', speakersRoute(params));
   router.use('/feedback', feedbackRoute(params));
   return router;
