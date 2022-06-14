@@ -63,6 +63,25 @@ module.exports = ({ feedbackService }) => {
       return next(err);
     }
   });
-
+  router.post('/api', validations, async (req, res, next) => {
+    try {
+      const { name, email, title, message } = req.body;
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        req.session.feedback = {
+          errors: errors.array(),
+        };
+        return res.json({ errors: errors.array() });
+      }
+      await feedbackService.addEntry(name, email, title, message);
+      const feedback = await feedbackService.getList();
+      req.session.feedback = {
+        message: 'Thank you for your feedback!',
+      };
+      return res.json({ feedback, message: 'Thank you for your feedback!' });
+    } catch (err) {
+      return next(err);
+    }
+  });
   return router;
 };

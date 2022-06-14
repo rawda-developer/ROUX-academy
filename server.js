@@ -24,6 +24,7 @@ app.set('trust proxy', 1); // trust first proxy cookies on (nginx)
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(async (req, res, next) => {
   try {
     const names = await speakerService.getNames();
