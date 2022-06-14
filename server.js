@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const app = express();
 const path = require('path');
@@ -22,6 +23,7 @@ app.locals.siteName = 'ROUX Academy';
 app.set('trust proxy', 1); // trust first proxy cookies on (nginx)
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(async (req, res, next) => {
   try {
     const names = await speakerService.getNames();

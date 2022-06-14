@@ -2,8 +2,20 @@
   <div class="row">
     <div class="col-md-4">
       <div class="maincontent">
+        <% if (locals.errors){ %>
+        <div class="alert alert-danger">
+          <p>Please fill out the form below to send us your feedback.</p>
+          <% errors.forEach(error => { %>
+          <p><%= error.msg %></p>
+          <% }) %>
+        </div>
+        <% }else if (locals.successMessage){ %>
+        <div class="alert alert-success">
+          <p><%= successMessage %></p>
+        </div>
+        <% } %>
         <h1>Send us feedback</h1>
-        <form class="feedback-form">
+        <form class="feedback-form" method="POST" action="/feedback">
           <div class="form-group">
             <label for="feedback-form-name">feedback</label>
             <input
@@ -11,6 +23,7 @@
               class="form-control"
               id="feedback-form-name"
               placeholder="Enter your name"
+              name="name"
             />
           </div>
           <div class="form-group">
@@ -20,6 +33,7 @@
               class="form-control"
               id="feedback-form-email"
               placeholder="Enter your email address"
+              name="email"
             />
           </div>
           <div class="form-group">
@@ -29,6 +43,7 @@
               class="form-control"
               id="feedback-form-title"
               placeholder="Title of your feedback"
+              name="title"
             />
           </div>
           <div class="form-group">
@@ -39,6 +54,7 @@
               class="form-control"
               id="feedback-form-message"
               rows="6"
+              name="message"
             ></textarea>
           </div>
           <button type="submit" class="btn btn-secondary float-right">Submit</button>
